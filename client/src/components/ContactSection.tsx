@@ -37,10 +37,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50">
+    <section id="contact" className="py-16 md:py-24 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-primary">Get in</span> Touch
+          </h2>
           <p className="text-lg text-gray-600">
             Have questions about our services? We're here to help.
           </p>
@@ -48,14 +50,14 @@ export default function ContactSection() {
         
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="p-6 md:p-8 bg-primary-500 text-white">
+            <div className="p-6 md:p-8 bg-primary text-white">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <MapPin className="h-6 w-6 mr-3 mt-0.5" />
                   <div>
                     <h4 className="text-sm font-medium text-white opacity-75 mb-1">Our Location</h4>
-                    <p>Jl. Sudirman No. 123<br />Jakarta Pusat, Indonesia 10220</p>
+                    <p>Department of Computer Science<br />Universitas Sugeng Hartono<br />Sukoharjo, Indonesia</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -69,7 +71,7 @@ export default function ContactSection() {
                   <Phone className="h-6 w-6 mr-3 mt-0.5" />
                   <div>
                     <h4 className="text-sm font-medium text-white opacity-75 mb-1">Phone</h4>
-                    <p>+62 21 1234 5678</p>
+                    <p>+62 856 2160 034</p>
                   </div>
                 </div>
               </div>

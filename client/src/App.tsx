@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import ImageAnalysis from "./pages/ImageAnalysis";
 import BrandAnalysis from "./pages/BrandAnalysis";
 import NotFound from "./pages/not-found";
+import ChatbotButton from "./components/ChatbotButton";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <ChatbotButton />
       </TooltipProvider>
     </QueryClientProvider>
   );
