@@ -66,7 +66,7 @@ export default function Navbar() {
           <div className="hidden md:flex md:items-center">
             <a
               href="#features"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
             >
               Get Started
             </a>
@@ -81,20 +81,20 @@ export default function Navbar() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.name}
               href={item.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-primary-500 hover:bg-gray-100"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
-            </Link>
+            </a>
           ))}
         </div>
         <div className="pt-4 pb-3 border-t border-gray-200">
           <a
             href="#features"
-            className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 mx-2"
+            className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mx-2 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
             Get Started
