@@ -12,33 +12,33 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Features", href: "/#features" },
-    { name: "About", href: "/#about" },
-    { name: "Pricing", href: "/#pricing" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Features", href: "#features" },
+    { name: "About", href: "#about" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <LogoIcon className="h-8 w-8 text-primary-500" />
-              <span className="ml-2 text-xl font-semibold">Merek.AI</span>
+              <LogoIcon className="h-8 w-8 text-primary" />
+              <span className="ml-2 text-xl font-semibold text-primary">Merek.AI</span>
             </Link>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
-                className={`text-dark hover:text-primary-500 px-3 py-2 font-medium ${
-                  location === item.href ? "text-primary-500" : ""
+                className={`text-gray-700 hover:text-primary px-3 py-2 font-medium transition-colors ${
+                  location === item.href ? "text-primary font-semibold" : ""
                 }`}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
           </div>
           <div className="flex items-center md:hidden">
@@ -64,12 +64,12 @@ export default function Navbar() {
             </button>
           </div>
           <div className="hidden md:flex md:items-center">
-            <Link
-              href="/#features"
+            <a
+              href="#features"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
               Get Started
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
@@ -92,13 +92,13 @@ export default function Navbar() {
           ))}
         </div>
         <div className="pt-4 pb-3 border-t border-gray-200">
-          <Link
-            href="/#features"
+          <a
+            href="#features"
             className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 mx-2"
             onClick={() => setIsMenuOpen(false)}
           >
             Get Started
-          </Link>
+          </a>
         </div>
       </div>
     </header>
