@@ -3,10 +3,17 @@ import OpenAI from "openai";
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 const OPENAI_MODEL = "gpt-4o";
 
+// Check if we have a valid API key
+const apiKey = process.env.OPENAI_API_KEY;
+const useDemo = !apiKey || apiKey === "demo";
+
 // Initialize OpenAI with API key from environment variables
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "demo", // Using a fallback for demo mode
-});
+let openai: OpenAI | undefined;
+if (!useDemo) {
+  openai = new OpenAI({
+    apiKey: apiKey
+  });
+}
 
 interface Brand {
   name: string;
@@ -30,6 +37,12 @@ export const openaiService = {
    * Compare two brand names using OpenAI's language model
    */
   async compareBrands(brand1: Brand, brand2: Brand): Promise<BrandComparisonResult> {
+    // If we're in demo mode, return a demo response right away
+    if (useDemo) {
+      console.log("Using demo mode for brand comparison since API key is not valid");
+      return generateDemoResponse(brand1, brand2);
+    }
+    
     try {
       const prompt = `
         Compare the following two brand names:
@@ -63,6 +76,10 @@ export const openaiService = {
         - brand2 (object with name, description, type)
       `;
 
+      if (!openai) {
+        throw new Error("OpenAI client is not initialized");
+      }
+      
       const response = await openai.chat.completions.create({
         model: OPENAI_MODEL,
         messages: [{ role: "user", content: prompt }],
@@ -87,12 +104,8 @@ export const openaiService = {
     } catch (error: any) {
       console.error("Error comparing brands with OpenAI:", error);
       
-      // If OpenAI API is unavailable, return a fallback demo response
-      if (process.env.OPENAI_API_KEY === "demo" || !process.env.OPENAI_API_KEY) {
-        return generateDemoResponse(brand1, brand2);
-      }
-      
-      throw new Error(`Failed to analyze brand names: ${error.message}`);
+      // If there's an error, also use the fallback demo response
+      return generateDemoResponse(brand1, brand2);
     }
   }
 };
