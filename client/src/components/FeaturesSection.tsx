@@ -28,7 +28,7 @@ export default function FeaturesSection() {
                 Compare two images to determine their visual similarity using advanced Vision Transformer (ViT) technology. Get a detailed analysis with similarity percentage and actionable recommendations.
               </p>
               <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Image analysis visualization"
                 className="w-full h-48 object-cover rounded-lg mb-6"
               />
@@ -46,14 +46,12 @@ export default function FeaturesSection() {
                   <span className="text-gray-700">Smart recommendations</span>
                 </li>
               </ul>
-              <Link href="/image-analysis">
-                <a className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
-                  Try Image Analysis
-                  <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </Link>
+              <a href="/image-analysis" className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
+                Try Image Analysis
+                <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -72,7 +70,7 @@ export default function FeaturesSection() {
                 Compare two brand names to analyze their similarity in terms of words, phonetics, and meaning. Evaluate compliance with Indonesian regulations and get comprehensive recommendations.
               </p>
               <img
-                src="https://images.unsplash.com/photo-1588600878108-578031a7e32e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Brand comparison illustration"
                 className="w-full h-48 object-cover rounded-lg mb-6"
               />
@@ -90,14 +88,12 @@ export default function FeaturesSection() {
                   <span className="text-gray-700">Detailed reports with recommendations</span>
                 </li>
               </ul>
-              <Link href="/brand-analysis">
-                <a className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium">
-                  Try Brand Analysis
-                  <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </Link>
+              <a href="/brand-analysis" className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium">
+                Try Brand Analysis
+                <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

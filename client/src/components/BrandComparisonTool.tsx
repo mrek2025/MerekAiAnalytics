@@ -239,7 +239,7 @@ export default function BrandComparisonTool() {
               !brand1.name ||
               !brand2.name
             }
-            className="bg-accent-500 hover:bg-accent-600"
+            className="bg-accent-500 hover:bg-accent-600 text-white"
           >
             {compareBrandsMutation.isPending ? "Analyzing..." : "Analyze Brand Names"}
           </Button>
