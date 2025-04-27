@@ -16,8 +16,13 @@ export default function HeroSection() {
               <a href="#features" className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-md transition-colors">
                 Explore Features
               </a>
-              <a href="#contact" className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm transition-colors">
-                Contact Us
+              <a 
+                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20layanan%20Merek.AI" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm transition-colors"
+              >
+                Hubungi Kami
               </a>
             </div>
           </div>
