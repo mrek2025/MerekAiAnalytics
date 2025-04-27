@@ -116,7 +116,18 @@ export const openaiService = {
     // If we're in demo mode, return a demo response right away
     if (useDemo) {
       console.log("Using demo mode for chatbot since API key is not valid");
-      return "Sorry, I can't provide a personalized response right now. Our AI assistant is currently in demo mode. Please check back later when our API is configured.";
+      
+      // Generate a more helpful demo response
+      const demoResponses = [
+        "Merek.AI dapat membantu Anda membandingkan merek dan gambar untuk mencegah pelanggaran hak kekayaan intelektual. Apa yang ingin Anda ketahui lebih lanjut?",
+        "Sebagai layanan brand protection, kami menawarkan analisis perbandingan merek dan gambar. Bagaimana saya bisa membantu Anda hari ini?",
+        "Kami menggunakan AI untuk menganalisis kesamaan antara merek dan gambar. Apakah Anda ingin mengetahui lebih lanjut tentang fitur kami?",
+        "Merek.AI memiliki fitur perbandingan merek, analisis gambar, dan pemantauan merek. Apakah Anda tertarik dengan salah satu fitur tersebut?",
+        "Perlindungan merek sangat penting di era digital. Merek.AI hadir untuk membantu Anda mengamankan identitas brand Anda. Ada pertanyaan spesifik?",
+      ];
+      
+      // Return a random response from the demo responses
+      return demoResponses[Math.floor(Math.random() * demoResponses.length)];
     }
     
     try {
@@ -151,8 +162,17 @@ export const openaiService = {
     } catch (error: any) {
       console.error("Error generating chatbot response with OpenAI:", error);
       
-      // If there's an error, return a generic error message
-      return "I'm sorry, I'm having trouble processing your request right now. Please try again later.";
+      // If there's an error, return a more helpful message
+      const errorResponses = [
+        "Maaf, API kami sedang mengalami masalah teknis. Silakan coba fitur perbandingan merek atau gambar kami, atau coba lagi nanti.",
+        "Terjadi kendala pada sistem AI kami. Namun Anda tetap dapat menggunakan fitur perbandingan merek dan analisis gambar kami di halaman utama.",
+        "Sistem AI kami sedang dalam pemeliharaan. Sementara itu, Anda bisa mencoba fitur brand monitoring atau perbandingan merek kami.",
+        "Sepertinya ada masalah dengan koneksi AI kami. Tapi Anda masih bisa menggunakan fitur-fitur analisis kami yang lain.",
+        "AI Assistant kami sedang mengalami kendala. Silakan gunakan fitur perbandingan merek atau kunjungi halaman Brand Monitoring kami."
+      ];
+      
+      // Return a random error response
+      return errorResponses[Math.floor(Math.random() * errorResponses.length)];
     }
   }
 };
