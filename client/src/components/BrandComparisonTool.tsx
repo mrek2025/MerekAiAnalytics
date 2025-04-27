@@ -6,13 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, AlertCircle, AlertTriangle } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import {
   Alert,
@@ -55,29 +48,13 @@ export default function BrandComparisonTool() {
   const [result, setResult] = useState<BrandComparisonResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const industryOptions = [
-    "Food & Beverage",
-    "Technology",
-    "Fashion & Apparel",
-    "Healthcare",
-    "Financial Services",
-    "Entertainment",
-    "Education",
-    "Other",
-  ];
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     brandNum: 1 | 2,
-    field: "name" | "description"
+    field: "name" | "description" | "type"
   ) => {
     const setter = brandNum === 1 ? setBrand1 : setBrand2;
     setter((prev) => ({ ...prev, [field]: e.target.value }));
-  };
-
-  const handleTypeChange = (value: string, brandNum: 1 | 2) => {
-    const setter = brandNum === 1 ? setBrand1 : setBrand2;
-    setter((prev) => ({ ...prev, type: value }));
   };
 
   const clearForm = () => {
@@ -164,21 +141,14 @@ export default function BrandComparisonTool() {
           </div>
           <div>
             <Label htmlFor="brand1-type">Product/Service Type</Label>
-            <Select
+            <Input
+              id="brand1-type"
+              name="brand1-type"
               value={brand1.type}
-              onValueChange={(value) => handleTypeChange(value, 1)}
-            >
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                {industryOptions.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              onChange={(e) => handleChange(e, 1, "type")}
+              placeholder="e.g. Coffee Shop, Fashion Retail"
+              className="mt-1"
+            />
           </div>
         </div>
 
@@ -210,21 +180,14 @@ export default function BrandComparisonTool() {
           </div>
           <div>
             <Label htmlFor="brand2-type">Product/Service Type</Label>
-            <Select
+            <Input
+              id="brand2-type"
+              name="brand2-type"
               value={brand2.type}
-              onValueChange={(value) => handleTypeChange(value, 2)}
-            >
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                {industryOptions.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              onChange={(e) => handleChange(e, 2, "type")}
+              placeholder="e.g. Coffee Shop, Fashion Retail"
+              className="mt-1"
+            />
           </div>
         </div>
       </div>
