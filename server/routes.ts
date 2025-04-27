@@ -5,6 +5,7 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { openaiService } from "./services/openai.service";
+import { anthropicService } from "./services/anthropic.service";
 import { imageService } from "./services/image.service";
 
 // Set up multer for file uploads
@@ -79,8 +80,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).send("Missing brand names. Please provide both brand names.");
       }
 
-      // Process the brand name comparison
-      const result = await openaiService.compareBrands(brand1, brand2);
+      // Process the brand name comparison using Anthropic
+      const result = await anthropicService.compareBrands(brand1, brand2);
       res.json(result);
     } catch (error: any) {
       console.error("Error comparing brands:", error);
@@ -97,8 +98,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).send("Missing message. Please provide a message.");
       }
 
-      // Process the chatbot message
-      const response = await openaiService.generateChatResponse(message);
+      // Process the chatbot message using Anthropic
+      const response = await anthropicService.generateChatResponse(message);
       res.json({ response });
     } catch (error: any) {
       console.error("Error generating chatbot response:", error);
