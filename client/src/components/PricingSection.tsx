@@ -25,23 +25,23 @@ export default function PricingSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">5 image comparisons/month</span>
+                  <span className="text-gray-700">Image similarity comparison</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">5 brand name analyses/month</span>
+                  <span className="text-gray-700">Brand name analysis</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Basic analysis reports</span>
+                  <span className="text-gray-700">Basic AI chatbot assistant</span>
+                </li>
+                <li className="flex items-start text-gray-400">
+                  <XCircle className="h-5 w-5 mt-0.5 mr-2" />
+                  <span>Trademark database integration</span>
                 </li>
                 <li className="flex items-start text-gray-400">
                   <XCircle className="h-5 w-5 mt-0.5 mr-2" />
                   <span>API access</span>
-                </li>
-                <li className="flex items-start text-gray-400">
-                  <XCircle className="h-5 w-5 mt-0.5 mr-2" />
-                  <span>Priority support</span>
                 </li>
               </ul>
               <a
@@ -70,19 +70,19 @@ export default function PricingSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">100 image comparisons/month</span>
+                  <span className="text-gray-700">Semua fitur paket Basic</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">100 brand name analyses/month</span>
+                  <span className="text-gray-700">Integrasi dengan data merek terdaftar</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Advanced analysis reports</span>
+                  <span className="text-gray-700">Model AI lebih andal dan terbaru</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">API access</span>
+                  <span className="text-gray-700">Analisis dan rekomendasi mendalam</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
@@ -112,23 +112,27 @@ export default function PricingSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Unlimited image comparisons</span>
+                  <span className="text-gray-700">Semua fitur paket Professional</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Unlimited brand name analyses</span>
+                  <span className="text-gray-700">Data merek real-time</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Premium analysis reports</span>
+                  <span className="text-gray-700">Analisis tanpa batas</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Advanced API with higher rate limits</span>
+                  <span className="text-gray-700">Akses API lengkap</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Dedicated account manager</span>
+                  <span className="text-gray-700">Konsultasi gratis dengan konsultan merek</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
+                  <span className="text-gray-700">Dukungan dedicated</span>
                 </li>
               </ul>
               <a
