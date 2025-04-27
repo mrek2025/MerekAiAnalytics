@@ -8,6 +8,7 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import ImageAnalysis from "./pages/ImageAnalysis";
 import BrandAnalysis from "./pages/BrandAnalysis";
+import BrandMonitoring from "./pages/BrandMonitoring";
 import NotFound from "./pages/not-found";
 import ChatbotButton from "./components/ChatbotButton";
 
@@ -18,6 +19,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/image-analysis" component={ImageAnalysis} />
         <Route path="/brand-analysis" component={BrandAnalysis} />
+        <Route path="/brand-monitoring" component={BrandMonitoring} />
         <Route component={NotFound} />
       </Switch>
     </MainLayout>
