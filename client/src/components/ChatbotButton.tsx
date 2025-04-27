@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { apiRequest } from "@/lib/queryClient";
+// apiRequest no longer needed as we're using fetch directly
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -67,10 +67,11 @@ export default function ChatbotButton() {
     
     try {
       // Call the OpenAI API endpoint through our server
-      const response = await apiRequest("/api/chatbot", {
+      const response = await fetch("/api/chatbot", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage.content }),
-      });
+      }).then(res => res.json());
       
       // Create the bot response
       const botResponse: Message = {
