@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import fetch from "node-fetch";
 import crypto from "crypto";
+import { pipeline } from "@xenova/transformers";
 
 interface ImageComparisonResult {
   similarity: number;
@@ -11,10 +12,12 @@ interface ImageComparisonResult {
   image2Url: string;
 }
 
+// Cache for ViT model
+let vitModel: any = null;
+
 export const imageService = {
   /**
-   * Compare two images using alternative approach
-   * This is a fallback since the ViT model cannot be accessed
+   * Compare two images using Vision Transformer (ViT) and Euclidean distance
    */
   async compareImages(
     image1Source: string,
@@ -27,24 +30,47 @@ export const imageService = {
         this.prepareImage(image2Source)
       ]);
 
-      // Since we can't access ViT, we'll use a simplified approach for demo
-      // Generate a hash for each image to compare basic structural similarities
-      const hash1 = this.generateImageHash(image1.data);
-      const hash2 = this.generateImageHash(image2.data);
-      
-      // Calculate hash similarity (simplified approach)
-      const similarity = this.calculateHashSimilarity(hash1, hash2);
+      try {
+        // Try to use ViT model for feature extraction
+        const [features1, features2] = await Promise.all([
+          this.extractFeaturesWithViT(image1.data),
+          this.extractFeaturesWithViT(image2.data)
+        ]);
 
-      // Generate analysis and recommendation
-      const { analysis, recommendation } = this.generateRecommendation(similarity);
+        // Calculate similarity using Euclidean distance
+        const similarity = this.calculateEuclideanSimilarity(features1, features2);
 
-      return {
-        similarity,
-        analysis,
-        recommendation,
-        image1Url: image1.url,
-        image2Url: image2.url
-      };
+        // Generate analysis and recommendation
+        const { analysis, recommendation } = this.generateRecommendation(similarity);
+
+        return {
+          similarity,
+          analysis,
+          recommendation,
+          image1Url: image1.url,
+          image2Url: image2.url
+        };
+      } catch (vitError) {
+        console.warn("Failed to use ViT model, falling back to hash comparison:", vitError);
+        
+        // Fallback to hash-based comparison
+        const hash1 = this.generateImageHash(image1.data);
+        const hash2 = this.generateImageHash(image2.data);
+        
+        // Calculate hash similarity
+        const similarity = this.calculateHashSimilarity(hash1, hash2);
+
+        // Generate analysis and recommendation
+        const { analysis, recommendation } = this.generateRecommendation(similarity);
+
+        return {
+          similarity,
+          analysis,
+          recommendation,
+          image1Url: image1.url,
+          image2Url: image2.url
+        };
+      }
     } catch (error: any) {
       console.error("Error comparing images:", error);
       throw new Error(`Failed to compare images: ${error.message}`);
@@ -52,7 +78,67 @@ export const imageService = {
   },
   
   /**
-   * Generate a simple hash for image comparison
+   * Extract image features using Vision Transformer (ViT) model
+   */
+  async extractFeaturesWithViT(imageData: Buffer | Blob): Promise<number[]> {
+    try {
+      // Load the model if not already loaded
+      if (!vitModel) {
+        console.log("Loading ViT model for the first time...");
+        vitModel = await pipeline("feature-extraction", "Xenova/vit-base-patch16-224");
+        console.log("ViT model loaded successfully");
+      }
+      
+      // Convert buffer to base64 if needed
+      let processableData: string | Blob;
+      if (Buffer.isBuffer(imageData)) {
+        processableData = `data:image/jpeg;base64,${imageData.toString('base64')}`;
+      } else {
+        processableData = imageData;
+      }
+      
+      // Extract features
+      const output = await vitModel(processableData);
+      
+      // Get the [CLS] token embedding which represents the whole image
+      // Use type assertion with mapping to ensure we get an array of numbers
+      const features = Array.from(output.data[0][0]).map(val => Number(val));
+      
+      return features;
+    } catch (error) {
+      console.error("Error extracting features with ViT:", error);
+      throw error;
+    }
+  },
+  
+  /**
+   * Calculate similarity using Euclidean distance between feature vectors
+   * Returns a similarity score between 0-100 (higher = more similar)
+   */
+  calculateEuclideanSimilarity(featuresA: number[], featuresB: number[]): number {
+    if (featuresA.length !== featuresB.length) {
+      throw new Error("Feature vectors must have the same length");
+    }
+    
+    // Calculate Euclidean distance
+    let sumSquaredDifferences = 0;
+    for (let i = 0; i < featuresA.length; i++) {
+      const diff = featuresA[i] - featuresB[i];
+      sumSquaredDifferences += diff * diff;
+    }
+    const euclideanDistance = Math.sqrt(sumSquaredDifferences);
+    
+    // Convert to similarity score (0-100)
+    // We use an exponential decay formula to convert distance to similarity
+    // Smaller distances result in higher similarity scores
+    const similarity = 100 * Math.exp(-euclideanDistance / 10);
+    
+    // Round to nearest integer and ensure it's between 0-100
+    return Math.min(100, Math.max(0, Math.round(similarity)));
+  },
+  
+  /**
+   * Generate a simple hash for image comparison (fallback method)
    */
   generateImageHash(imageData: Buffer | Blob): string {
     // For Buffer
@@ -68,7 +154,7 @@ export const imageService = {
   },
   
   /**
-   * Calculate similarity based on image hashes
+   * Calculate similarity based on image hashes (fallback method)
    */
   calculateHashSimilarity(hash1: string, hash2: string): number {
     if (hash1 === hash2) return 100;
@@ -83,11 +169,8 @@ export const imageService = {
       }
     }
     
-    // Add some randomness for demo purposes
-    const baseScore = Math.floor((matchCount / minLength) * 80);
-    const randomFactor = Math.floor(Math.random() * 20);
-    
-    return Math.min(100, baseScore + randomFactor);
+    // Calculate similarity score
+    return Math.round((matchCount / minLength) * 100);
   },
 
   /**

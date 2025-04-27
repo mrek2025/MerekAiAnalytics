@@ -84,6 +84,29 @@ export function calculateCosineSimilarity(featuresA: number[], featuresB: number
   return Math.round(similarity * 100 * 100) / 100;
 }
 
+// Calculate Euclidean distance similarity between two feature vectors
+export function calculateEuclideanSimilarity(featuresA: number[], featuresB: number[]) {
+  if (featuresA.length !== featuresB.length) {
+    throw new Error("Feature vectors must have the same length");
+  }
+  
+  // Calculate Euclidean distance
+  let sumSquaredDifferences = 0;
+  for (let i = 0; i < featuresA.length; i++) {
+    const diff = featuresA[i] - featuresB[i];
+    sumSquaredDifferences += diff * diff;
+  }
+  const euclideanDistance = Math.sqrt(sumSquaredDifferences);
+  
+  // Convert to similarity score (0-100)
+  // We use an exponential decay formula to convert distance to similarity
+  // Smaller distances result in higher similarity scores
+  const similarity = 100 * Math.exp(-euclideanDistance / 10);
+  
+  // Round to nearest integer and ensure it's between 0-100
+  return Math.min(100, Math.max(0, Math.round(similarity)));
+}
+
 // Prepare recommendations based on similarity score
 export function generateRecommendation(similarityScore: number) {
   if (similarityScore >= 70) {

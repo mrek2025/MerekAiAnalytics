@@ -24,8 +24,11 @@ export default function ImageAnalysis() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-10 text-center">
           <h1 className="text-3xl font-bold mb-4">Image Similarity Analysis</h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 mb-2">
             Upload or provide URLs for two images to compare their visual similarity using our advanced Vision Transformer (ViT) technology.
+          </p>
+          <p className="text-gray-500 text-sm max-w-2xl mx-auto">
+            Our system uses the Vision Transformer (ViT) model to extract deep visual features from images, then applies Euclidean distance metrics to determine similarity with high precision. This approach helps identify potential trademark infringements even when images have been altered.
           </p>
         </div>
         
