@@ -45,12 +45,10 @@ export default function PricingSection() {
                 </li>
               </ul>
               <a
-                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Basic%20Merek.AI"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/#features"
                 className="mt-8 block w-full px-4 py-2 border border-primary-500 text-primary-500 text-center font-medium rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Hubungi Kami
+                Get Started
               </a>
             </div>
           </div>
@@ -97,7 +95,7 @@ export default function PricingSection() {
                 rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 bg-primary-500 text-white text-center font-medium rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Hubungi Kami
+                Hubungi Sales
               </a>
             </div>
           </div>
