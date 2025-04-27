@@ -63,19 +63,13 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
-          <div className="hidden md:flex md:items-center space-x-2">
-            <Link
-              href="/brand-analysis"
+          <div className="hidden md:flex md:items-center">
+            <a
+              href="#features"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
             >
-              Brand Analysis
-            </Link>
-            <Link
-              href="/image-analysis"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
-            >
-              Image Analysis
-            </Link>
+              Get Started
+            </a>
           </div>
         </div>
       </nav>
@@ -97,21 +91,14 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <div className="pt-4 pb-3 border-t border-gray-200 px-2 flex flex-col space-y-2">
-          <Link
-            href="/brand-analysis"
-            className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
+        <div className="pt-4 pb-3 border-t border-gray-200">
+          <a
+            href="#features"
+            className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mx-2 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Brand Analysis
-          </Link>
-          <Link
-            href="/image-analysis"
-            className="block w-full text-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Image Analysis
-          </Link>
+            Get Started
+          </a>
         </div>
       </div>
     </header>
