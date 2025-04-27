@@ -46,7 +46,7 @@ export default function PricingSection() {
               </ul>
               <a
                 href="/#features"
-                className="mt-8 block w-full px-4 py-2 border border-primary-500 text-primary-500 text-center font-medium rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                className="mt-8 block w-full px-4 py-2 bg-primary text-white text-center font-medium rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
                 Get Started
               </a>
@@ -141,7 +141,7 @@ export default function PricingSection() {
                 href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Enterprise%20Merek.AI%20seharga%20Rp%20999K"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 block w-full px-4 py-2 border border-gray-300 text-dark text-center font-medium rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                className="mt-8 block w-full px-4 py-2 bg-orange-500 text-white text-center font-medium rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Hubungi Sales
               </a>

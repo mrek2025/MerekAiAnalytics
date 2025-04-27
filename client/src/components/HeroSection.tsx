@@ -20,7 +20,7 @@ export default function HeroSection() {
                 href="https://wa.me/6285621600034?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20Merek.AI.%20Boleh%20saya%20mendapatkan%20informasi%20lebih%20lanjut%3F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm transition-colors">
+                className="inline-flex justify-center items-center px-6 py-3 bg-orange-500 text-base font-medium rounded-md text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 shadow-sm transition-colors">
                 Contact Us
               </a>
             </div>
