@@ -66,44 +66,40 @@ export default function ChatbotButton() {
     setIsLoading(true);
     
     try {
-      // This would be hooked up to a real API endpoint
-      // For now we'll simulate a response
+      // Call the OpenAI API endpoint through our server
+      const response = await apiRequest("/api/chatbot", {
+        method: "POST",
+        body: JSON.stringify({ message: userMessage.content }),
+      });
       
-      setTimeout(async () => {
-        try {
-          // In a real implementation, you would call your OpenAI API here
-          // const response = await apiRequest("/api/chatbot", {
-          //   method: "POST",
-          //   body: JSON.stringify({ message: userMessage.content }),
-          // });
-          
-          // Simulate a response for now
-          const botResponse: Message = {
-            id: generateUniqueId(),
-            role: "assistant",
-            content: `Thanks for your message. Our team is working to integrate OpenAI's API for this chatbot feature. For now, you can use our image or brand comparison tools at the top of the page.`,
-            timestamp: new Date(),
-          };
-          
-          setMessages((prev) => [...prev, botResponse]);
-        } catch (error) {
-          toast({
-            title: "Error",
-            description: "Failed to get a response. Please try again.",
-            variant: "destructive",
-          });
-        } finally {
-          setIsLoading(false);
-        }
-      }, 1000);
+      // Create the bot response
+      const botResponse: Message = {
+        id: generateUniqueId(),
+        role: "assistant",
+        content: response.response || "I'm sorry, I couldn't process your request right now.",
+        timestamp: new Date(),
+      };
       
+      setMessages((prev) => [...prev, botResponse]);
     } catch (error) {
       console.error("Error sending message:", error);
+      
+      // Add error message as bot response
+      const errorResponse: Message = {
+        id: generateUniqueId(),
+        role: "assistant",
+        content: "I'm sorry, I'm having trouble processing your request. Please try again later.",
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev, errorResponse]);
+      
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "Failed to get a response. Please try again.",
         variant: "destructive",
       });
+    } finally {
       setIsLoading(false);
     }
   };

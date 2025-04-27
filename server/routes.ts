@@ -88,6 +88,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Chatbot API endpoint
+  app.post("/api/chatbot", async (req, res) => {
+    try {
+      const { message } = req.body;
+
+      if (!message) {
+        return res.status(400).send("Missing message. Please provide a message.");
+      }
+
+      // Process the chatbot message
+      const response = await openaiService.generateChatResponse(message);
+      res.json({ response });
+    } catch (error: any) {
+      console.error("Error generating chatbot response:", error);
+      res.status(500).send(error.message || "Error processing the chatbot message");
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

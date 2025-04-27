@@ -107,6 +107,53 @@ export const openaiService = {
       // If there's an error, also use the fallback demo response
       return generateDemoResponse(brand1, brand2);
     }
+  },
+
+  /**
+   * Generate a response for the chatbot using OpenAI's language model
+   */
+  async generateChatResponse(message: string): Promise<string> {
+    // If we're in demo mode, return a demo response right away
+    if (useDemo) {
+      console.log("Using demo mode for chatbot since API key is not valid");
+      return "Sorry, I can't provide a personalized response right now. Our AI assistant is currently in demo mode. Please check back later when our API is configured.";
+    }
+    
+    try {
+      if (!openai) {
+        throw new Error("OpenAI client is not initialized");
+      }
+      
+      const systemPrompt = `
+        You are an AI assistant for Merek.AI, a brand protection service that helps analyze brand similarities and image comparisons.
+        Respond in a helpful, professional manner, focusing on Indonesian brand protection and trademark laws.
+        You can help with questions about brand comparisons, image similarity, and general advice about protecting brand identity.
+        Keep responses concise and to the point, under 250 words.
+        If asked about services not offered by Merek.AI, politely redirect to the core services.
+      `;
+      
+      const response = await openai.chat.completions.create({
+        model: OPENAI_MODEL,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: message }
+        ],
+        temperature: 0.7,
+        max_tokens: 500,
+      });
+
+      const content = response.choices[0].message.content;
+      if (!content) {
+        throw new Error("Failed to get a response from the AI model");
+      }
+
+      return content;
+    } catch (error: any) {
+      console.error("Error generating chatbot response with OpenAI:", error);
+      
+      // If there's an error, return a generic error message
+      return "I'm sorry, I'm having trouble processing your request right now. Please try again later.";
+    }
   }
 };
 
