@@ -1,17 +1,19 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-// the newest Anthropic model is "claude-3-7-sonnet-20250219" which was released February 24, 2025
-const ANTHROPIC_MODEL = 'claude-3-7-sonnet-20250219';
+// Use Claude 3 Sonnet model from Anthropic
+const ANTHROPIC_MODEL = 'claude-3-sonnet-20240229';
 
-// Check if we have a valid API key
-const apiKey = process.env.ANTHROPIC_API_KEY;
-const useDemo = !apiKey || apiKey === "demo";
+// Use the provided API key for Claude
+const apiKey = "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";
+// Since we have a hardcoded API key, we're not in demo mode
+const useDemo = false;
 
-// Initialize Anthropic with API key from environment variables
+// Initialize Anthropic with API key from environment variables and use OpenRouter
 let anthropic: Anthropic | undefined;
 if (!useDemo) {
   anthropic = new Anthropic({
     apiKey: apiKey,
+    baseURL: "https://openrouter.ai/api/v1",
   });
 }
 
@@ -86,25 +88,31 @@ export const anthropicService = {
         - brand2 (object with name, description, type)
       `;
 
-      const response = await anthropic.messages.create({
-        model: ANTHROPIC_MODEL,
-        max_tokens: 1500,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.5,
-      });
+      // Use an explicit fetch to OpenRouter instead of the Anthropic SDK
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': 'https://merek.ai', // Replace with your site URL
+          'X-Title': 'Merek.AI'
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3-sonnet',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 1500,
+          temperature: 0.5,
+        })
+      }).then(res => res.json());
 
-      // Anthropic response format changed, safely extract the content
+      // OpenRouter response format is different from Anthropic API
       let content = '';
-      if (response.content && response.content.length > 0) {
-        // Use type assertion to handle API type issues
-        const contentBlock = response.content[0] as any;
-        if (contentBlock && contentBlock.text) {
-          content = contentBlock.text;
-        } else {
-          throw new Error("Unable to extract text content from Anthropic response");
-        }
+      if (response.choices && response.choices.length > 0 && response.choices[0].message && response.choices[0].message.content) {
+        content = response.choices[0].message.content;
+        console.log("Successfully received response from OpenRouter API");
       } else {
-        throw new Error("Unexpected response format from Anthropic API");
+        console.error("Unexpected OpenRouter API response format:", JSON.stringify(response, null, 2));
+        throw new Error("Unexpected response format from OpenRouter API");
       }
       
       // Parse the JSON response
@@ -164,17 +172,36 @@ export const anthropicService = {
         If asked about services not offered by Merek.AI, politely redirect to the core services.
       `;
 
-      const response = await anthropic.messages.create({
-        model: ANTHROPIC_MODEL,
-        system: systemPrompt,
-        max_tokens: 500,
-        messages: [{ role: 'user', content: message }],
-      });
+      // Use an explicit fetch to OpenRouter instead of the Anthropic SDK
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': 'https://merek.ai', // Replace with your site URL
+          'X-Title': 'Merek.AI'
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3-sonnet',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: message }
+          ],
+          max_tokens: 500,
+          temperature: 0.7,
+        })
+      }).then(res => res.json());
 
       // Anthropic response format changed, safely extract the content
       let content = '';
-      if (response.content && response.content.length > 0 && 'text' in response.content[0]) {
-        content = response.content[0].text;
+      if (response.content && response.content.length > 0) {
+        // Use type assertion to handle API type issues
+        const contentBlock = response.content[0] as any;
+        if (contentBlock && contentBlock.text) {
+          content = contentBlock.text;
+        } else {
+          throw new Error("Unable to extract text content from Anthropic response");
+        }
       } else {
         throw new Error("Unexpected response format from Anthropic API");
       }
