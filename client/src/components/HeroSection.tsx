@@ -17,7 +17,7 @@ export default function HeroSection() {
                 Explore Features
               </a>
               <a 
-                href="https://wa.me/6285621600034?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20Merek.AI.%20Boleh%20saya%20mendapatkan%20informasi%20lebih%20lanjut%3F"
+                href="https://wa.me/6285621600034?text=Hello%2C%20I'm%20interested%20in%20Merek.AI%20services.%20Can%20I%20get%20more%20information%3F"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex justify-center items-center px-6 py-3 bg-orange-500 text-base font-medium rounded-md text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 shadow-sm transition-colors">

@@ -27,10 +27,10 @@ export default function ContactSection() {
     
     // Construct WhatsApp message
     const whatsappMessage = `
-Nama: ${formData.name}
+Name: ${formData.name}
 Email: ${formData.email}
 Subject: ${formData.subject}
-Pesan: ${formData.message}
+Message: ${formData.message}
     `.trim();
     
     // Encode message for URL

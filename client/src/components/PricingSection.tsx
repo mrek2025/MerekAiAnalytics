@@ -70,19 +70,19 @@ export default function PricingSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Semua fitur paket Basic</span>
+                  <span className="text-gray-700">All features from Basic plan</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Integrasi dengan data merek terdaftar</span>
+                  <span className="text-gray-700">Trademark database integration</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Model AI lebih andal dan terbaru</span>
+                  <span className="text-gray-700">Advanced and reliable AI models</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Analisis dan rekomendasi mendalam</span>
+                  <span className="text-gray-700">In-depth analysis and recommendations</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
@@ -90,12 +90,12 @@ export default function PricingSection() {
                 </li>
               </ul>
               <a
-                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Professional%20Merek.AI%20seharga%20Rp%20299K"
+                href="https://wa.me/6285621600034?text=I'm%20interested%20in%20the%20Professional%20plan%20of%20Merek.AI%20for%20Rp%20299K"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 bg-primary-500 text-white text-center font-medium rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Hubungi Sales
+                Contact Sales
               </a>
             </div>
           </div>
@@ -114,36 +114,36 @@ export default function PricingSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Semua fitur paket Professional</span>
+                  <span className="text-gray-700">All features from Professional plan</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Data merek real-time</span>
+                  <span className="text-gray-700">Real-time trademark data</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Analisis tanpa batas</span>
+                  <span className="text-gray-700">Unlimited analysis</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Akses API lengkap</span>
+                  <span className="text-gray-700">Full API access</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Konsultasi gratis dengan konsultan merek</span>
+                  <span className="text-gray-700">Free consultation with trademark experts</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2" />
-                  <span className="text-gray-700">Dukungan dedicated</span>
+                  <span className="text-gray-700">Dedicated support</span>
                 </li>
               </ul>
               <a
-                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Enterprise%20Merek.AI%20seharga%20Rp%20999K"
+                href="https://wa.me/6285621600034?text=I'm%20interested%20in%20the%20Enterprise%20plan%20of%20Merek.AI%20for%20Rp%20999K"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 bg-orange-500 text-white text-center font-medium rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
-                Hubungi Sales
+                Contact Sales
               </a>
             </div>
           </div>
