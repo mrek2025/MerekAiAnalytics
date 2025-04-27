@@ -192,18 +192,14 @@ export const anthropicService = {
         })
       }).then(res => res.json());
 
-      // Anthropic response format changed, safely extract the content
+      // OpenRouter response format is different from Anthropic API
       let content = '';
-      if (response.content && response.content.length > 0) {
-        // Use type assertion to handle API type issues
-        const contentBlock = response.content[0] as any;
-        if (contentBlock && contentBlock.text) {
-          content = contentBlock.text;
-        } else {
-          throw new Error("Unable to extract text content from Anthropic response");
-        }
+      if (response.choices && response.choices.length > 0 && response.choices[0].message && response.choices[0].message.content) {
+        content = response.choices[0].message.content;
+        console.log("Successfully received chatbot response from OpenRouter API");
       } else {
-        throw new Error("Unexpected response format from Anthropic API");
+        console.error("Unexpected OpenRouter API response format:", JSON.stringify(response, null, 2));
+        throw new Error("Unexpected response format from OpenRouter API");
       }
       
       if (!content) {
