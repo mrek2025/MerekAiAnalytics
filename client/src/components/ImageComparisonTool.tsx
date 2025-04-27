@@ -343,6 +343,9 @@ export default function ImageComparisonTool() {
                 </span>
               </div>
             </div>
+            <div className="mb-4 p-2 bg-primary/10 rounded-md text-xs text-gray-600">
+              <p>This analysis uses Vision Transformer (ViT) technology with Euclidean distance metrics to compare visual similarity between images.</p>
+            </div>
 
             <div className="flex flex-col md:flex-row gap-6 mb-6">
               <div className="flex-1">

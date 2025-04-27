@@ -2,6 +2,10 @@ import { Link } from "wouter";
 import { CheckCircle, Bot, BarChart3, Search, ShoppingBag, MessageSquare, Eye } from "lucide-react";
 
 export default function FeaturesSection() {
+  const scrollToBottom = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo(0, document.body.scrollHeight);
+  };
   return (
     <section id="features" className="py-16 md:py-24 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +31,7 @@ export default function FeaturesSection() {
                 <h3 className="text-xl font-semibold text-primary">Image Similarity Analysis</h3>
               </div>
               <p className="text-gray-600 mb-6">
-                Compare two images to determine their visual similarity using advanced Vision Transformer (ViT) technology. Get a detailed analysis with similarity percentage and actionable recommendations.
+                Compare two images to determine their visual similarity using advanced Vision Transformer (ViT) technology with Euclidean distance metrics. Get a detailed analysis with similarity percentage and actionable recommendations.
               </p>
               <img
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -38,6 +42,10 @@ export default function FeaturesSection() {
                 <li className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-primary mr-2" />
                   <span className="text-gray-700">Upload images or use URL</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-primary mr-2" />
+                  <span className="text-gray-700">Advanced ViT and Euclidean metrics</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-primary mr-2" />
@@ -130,12 +138,16 @@ export default function FeaturesSection() {
                   <span className="text-gray-700">Indonesian trademark law expertise</span>
                 </li>
               </ul>
-              <button onClick={() => document.querySelector('.fixed.bottom-6.right-6 button')?.click()} className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+              <a href="/" onClick={(e) => {
+                  e.preventDefault();
+                  // Just open the chat in a simpler way
+                  window.scrollTo(0, document.body.scrollHeight);
+                }} className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
                 Chat with AI Assistant
                 <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
 
