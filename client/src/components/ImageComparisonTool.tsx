@@ -299,6 +299,7 @@ export default function ImageComparisonTool() {
               compareImagesMutation.isPending ||
               ((!image1.file && !image1.url) || (!image2.file && !image2.url))
             }
+            className="bg-primary hover:bg-primary/90 text-white"
           >
             {compareImagesMutation.isPending ? "Analyzing..." : "Compare Images"}
           </Button>
@@ -308,6 +309,7 @@ export default function ImageComparisonTool() {
             variant="outline"
             onClick={clearImages}
             disabled={compareImagesMutation.isPending}
+            className="border-orange-500 text-orange-500 hover:bg-orange-50"
           >
             Clear
           </Button>
