@@ -45,10 +45,12 @@ export default function PricingSection() {
                 </li>
               </ul>
               <a
-                href="#"
+                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Basic%20Merek.AI"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 border border-primary-500 text-primary-500 text-center font-medium rounded-md hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Get Started
+                Hubungi Kami
               </a>
             </div>
           </div>
@@ -90,10 +92,12 @@ export default function PricingSection() {
                 </li>
               </ul>
               <a
-                href="#"
+                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Professional%20Merek.AI%20seharga%20Rp%20299K"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 bg-primary-500 text-white text-center font-medium rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Get Started
+                Hubungi Kami
               </a>
             </div>
           </div>
@@ -136,10 +140,12 @@ export default function PricingSection() {
                 </li>
               </ul>
               <a
-                href="#"
+                href="https://wa.me/6285621600034?text=Saya%20tertarik%20dengan%20paket%20Enterprise%20Merek.AI%20seharga%20Rp%20999K"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 block w-full px-4 py-2 border border-gray-300 text-dark text-center font-medium rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                Contact Sales
+                Hubungi Sales
               </a>
             </div>
           </div>

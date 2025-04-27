@@ -25,15 +25,30 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1000);
+    // Construct WhatsApp message
+    const whatsappMessage = `
+Nama: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+Pesan: ${formData.message}
+    `.trim();
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/6285621600034?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    
+    // Reset form
+    setIsSubmitting(false);
+    toast({
+      title: "Redirecting to WhatsApp",
+      description: "Your message is ready to be sent via WhatsApp.",
+    });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
